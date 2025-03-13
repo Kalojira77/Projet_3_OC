@@ -2,7 +2,6 @@
 import { displayWorks } from './display.js'; 
 import { createButton } from './display.js';
 import { listenerButton } from './display.js';
-
 import { getCategories } from './api.js';  // Importer la fonction fetchCategories
 import { getWorks } from './api.js';        // Importer la fonction fetchWorks
 
