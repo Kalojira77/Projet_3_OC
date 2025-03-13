@@ -9,6 +9,8 @@ import { getCategories } from './api.js';
 
 const categories = await getCategories();
 
+//** CREER LES TRAVAUX */ 
+
 export async function displayWorks(){
     const works = await getWorks();
     const gallery = document.getElementById('gallery');
@@ -20,7 +22,6 @@ export async function displayWorks(){
 
         workElement.classList.add('galleryItem');
 
-       // workElement.id = work.category.id;
         workElement.dataset.cat = work.category.id;
         
         workImage.src = work.imageUrl;
@@ -31,10 +32,11 @@ export async function displayWorks(){
         workElement.appendChild(workTitle);
         gallery.appendChild(workElement);
     }
+
     document.addEventListener('DOMContentLoaded', displayWorks);
 }
 
-// Creation et affichage des fonctionnalités de tri 
+//** CREER LES BOUTONS DE TRI */
 
 export async function createButton(){
     const filtres = document.getElementById('filter');
@@ -45,44 +47,40 @@ export async function createButton(){
         filterButton.textContent = filterCategory.name;
         filterButton.id = filterCategory.id;
         filterButton.classList.add("selectAll");
-
+        
+        filterButton.addEventListener("click", () => {
+            filtreObjet(filterCategory.id);
+        });
+        
         filtres.appendChild(filterButton);   
     }
- 
+
     // Créer un bouton 'tous' dont l'id est toujours supérieur de 1 à la taille du tableau catégorie = dynamique si ajout de catégorie
     const filterButtonTous = document.createElement('button');
     filterButtonTous.textContent = "tous";
-    filterButtonTous.id = categories.length+1;
+    filterButtonTous.id = 0;
+
+    filterButtonTous.addEventListener("click", () => {
+        filtreObjet(filterButtonTous.id);
+    });
     filtres.appendChild(filterButtonTous);  
     
 }
 
 // créer la fonction de display block/none des catégories en fonctions du choix user et une fonction spécifique pour la sélection "tous"
-function filtreObjet(){
+function filtreObjet(categoryId){
     const displayObjet = document.querySelectorAll('div.gallery figure');
 
-    displayObjet.forEach((element)=>{
-        element.style.display = 'none';
-        if(element.dataset.cat == this.id){
-            element.style.display = 'block';
+    displayObjet.forEach((element)=> {
+        element.style.display = "none";
+        if(categoryId == element.dataset.cat){
+            element.style.display = "block";
+        }else{
+            if(categoryId == 0){
+                element.style.display = "block";
+            }else{
+                element.style.display = "none";
+            }
         }
-    });
-}
-
-function filtreObjetAll(){
-    const displayObjet = document.querySelectorAll('div.gallery figure');
-
-    displayObjet.forEach((element)=>{
-        element.style.display = 'block';
-    });
-}
-
-// Fonction qui place un listener sur le boutton et qui lance les fonctions "filteObjet" et "filtreObjetAll"
-export function listenerButton(){
-
-    for (const categorie of categories) {
-            //   document.getElementById(categorie.id).addEventListener("click", filtreObjet);
-            document.getElementById(categorie.id).addEventListener("click", filtreObjet);
-    }
-   document.getElementById(categories.length+1).addEventListener("click",filtreObjetAll);
+    })
 }

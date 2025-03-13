@@ -6,7 +6,7 @@ export async function getCategories() {
   try {
     const reponse = await fetch('http://localhost:5678/api/categories');
     const categories = await reponse.json();
-    return categories
+    return categories;
   } catch (error) {
     console.log("categories n'est pas disponible ou ne retourne rien");
   }
