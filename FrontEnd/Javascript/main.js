@@ -1,6 +1,6 @@
 // Point d'entrée du JavaScript
-import { displayWorks } from './display.js'; 
-import { createButton } from './display.js';
+import { displayWorks } from './home.js'; 
+import { createButton } from './home.js';
 
 // Appeler les fonctions et afficher les résultats dans la console
 createButton();

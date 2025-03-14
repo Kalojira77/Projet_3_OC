@@ -1,15 +1,13 @@
-// Gestion de l'affichage des projet
+//** Gestion de l'affichage des projet */
 
-// affichage de la galerie 
+//** Importation des données WORKS et CATEGORIES depuis l'api */  
 
 import { getWorks } from './api.js'; 
 import { getCategories } from './api.js';
 
-// Récupère les données de catégories depuis api.js + créer et affiche la galerie : image, titre, alt, src.
+//** CREER LES TRAVAUX */ 
 
 const categories = await getCategories();
-
-//** CREER LES TRAVAUX */ 
 
 export async function displayWorks(){
     const works = await getWorks();
@@ -47,7 +45,7 @@ export async function createButton(){
         filterButton.textContent = filterCategory.name;
         filterButton.id = filterCategory.id;
         filterButton.classList.add("selectAll");
-        
+
         filterButton.addEventListener("click", () => {
             filtreObjet(filterCategory.id);
         });
@@ -55,7 +53,6 @@ export async function createButton(){
         filtres.appendChild(filterButton);   
     }
 
-    // Créer un bouton 'tous' dont l'id est toujours supérieur de 1 à la taille du tableau catégorie = dynamique si ajout de catégorie
     const filterButtonTous = document.createElement('button');
     filterButtonTous.textContent = "tous";
     filterButtonTous.id = 0;
@@ -67,7 +64,8 @@ export async function createButton(){
     
 }
 
-// créer la fonction de display block/none des catégories en fonctions du choix user et une fonction spécifique pour la sélection "tous"
+//** FONCTION DE FILTRAGE DES BOUTONS */
+
 function filtreObjet(categoryId){
     const displayObjet = document.querySelectorAll('div.gallery figure');
 
