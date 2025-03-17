@@ -90,48 +90,88 @@ function authentification(emailInput, passwordInput){
         });
 }
 
-// Ci dessous, work in progress
-// => Le problème c'est que les fichiers sont pas correctement liés ... login.js s'execute sur login.html et pas sur index.html
+// Admin mode
 
+export function adminMode() {
+    const token = sessionStorage.getItem("token");
 
-function handleLogout() {
-    // Supprimer le token du sessionStorage
-    sessionStorage.removeItem("token");
+    if (!token || window.location.pathname !== "/index.html") {
 
-    console.log("Déconnexion réussie. Token supprimé du sessionStorage.");
+        const login = document.getElementById("login"); 
+        login.classList.toggle("displayBlock");
 
-    // Redirection vers la page de connexion après déconnexion
-    window.location.href = "/index.html"; 
+        const logout = document.getElementById("logout");
+        logout.classList.toggle("displayNone");
+
+        return; // Pas de token ou pas sur index.html → on ne fait rien
+    }
+
+    const adminBanner = document.createElement("div");
+    adminBanner.id = "admin-banner";
+    adminBanner.style.position = "fixed";
+    adminBanner.style.top = "0";
+    adminBanner.style.left = "0";
+    adminBanner.style.width = "100%";
+    adminBanner.style.backgroundColor = "black";
+    adminBanner.style.color = "white";
+    adminBanner.style.display = "flex";
+    adminBanner.style.alignItems = "center";
+    adminBanner.style.justifyContent = "center";
+    adminBanner.style.padding = "10px";
+    
+    const editionIcone = document.createElement("i");
+    editionIcone.classList.add("fa", "fa-pen-to-square"); // Icône crayon d'édition
+    editionIcone.style.fontSize = "24px";
+    editionIcone.style.marginRight = "10px";
+    editionIcone.style.color = "white";
+
+    const editLink = document.createElement("a");
+    editLink.href = "#";
+    editLink.innerText = "Mode édition";
+    editLink.style.color = "white";
+    editLink.style.textDecoration = "none";
+
+    editLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("Ouverture de la modale d'édition (à implémenter)");
+    });
+
+    adminBanner.appendChild(editionIcone);
+    adminBanner.appendChild(editLink);
+    document.body.prepend(adminBanner);
+
+    const login = document.getElementById("login"); 
+    login.classList.toggle("displayNone");
+
+    const logout = document.getElementById("logout");
+    logout.classList.toggle("displayBlock");
 }
 
-// Assurer que l'élément avec l'ID "logout" existe avant d'ajouter l'événement
-document.addEventListener("DOMContentLoaded", () => {
+
+
+// Supprimer le token du sessionStorage
+export function setupLogout() {
     const logoutButton = document.getElementById("logout");
 
-        if (logoutButton) {
-            // Ajouter l'événement "click" au bouton de déconnexion
-            logoutButton.addEventListener("click", (event) => {
-                event.preventDefault();
-                handleLogout();
-            });
-        } else {
-            console.warn("Aucun bouton de déconnexion trouvé.");
-        }
-});
+    if (!logoutButton) {
+        console.warn("Aucun bouton de déconnexion trouvé.");
+        return;
+    }
 
-// Admin mode
-// function adminMode("token"){
-//     if (!sessionStorage.)
-//     alors -> changer le login en logout dans la navbarre
-//           -> faire apparaitre une div en haut avec un lien vers la modale
-// }
+    logoutButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        sessionStorage.removeItem("token");
+        console.log("Déconnexion réussie. Token supprimé du sessionStorage.");
+        window.location.href = "/index.html"; 
+    });
+
+}
 
 
 
 
 /*
 . Bannière d'accès modification => modale
-. Gestion du bouton de navigation "login/logout" à l'aide de toggle " https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_class "
 . CSS
 . Commentaires formalisés JS doc
 

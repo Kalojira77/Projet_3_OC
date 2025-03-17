@@ -95,6 +95,14 @@ nav li {
 	font-size: 1.2em;
 }
 
+.displayBlock {
+	display: block;
+}
+
+.displayNone {
+	display: none;
+}
+
 li:hover {
 	color: #B1663C;
 }
