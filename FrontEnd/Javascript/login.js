@@ -26,6 +26,10 @@ function createLoginForm() {
     submitButton.type = "submit";
     submitButton.textContent = "Se connecter";
 
+    const passwordForget = document.createElement("p");
+    passwordForget.textContent = "Mot de passe oublié";
+
+
     // Ajout des éléments au formulaire
     form.appendChild(emailLabel);
     form.appendChild(emailInput);
@@ -34,6 +38,9 @@ function createLoginForm() {
     form.appendChild(passwordInput);
     form.appendChild(document.createElement("br"));
     form.appendChild(submitButton);
+    form.appendChild(document.createElement("br"));
+    form.appendChild(passwordForget);
+    
 
     // Ajout du formulaire au container
     container.appendChild(form);
@@ -42,9 +49,13 @@ function createLoginForm() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         authentification(emailInput.value, passwordInput.value);
-        alert(`Email: ${emailInput.value}\nMot de passe: ${passwordInput.value}`);
     });
 }
+
+// Exécuter la fonction à la fin du chargement de la page
+document.addEventListener("DOMContentLoaded", createLoginForm);
+
+// Authentification
 
 function authentification(emailInput, passwordInput){
     fetch("http://localhost:5678/api/users/login", {
@@ -61,24 +72,69 @@ function authentification(emailInput, passwordInput){
             return response.json();
         })
         .then(data => {
-            localStorage.setItem("token", data.token);
-            alert("Connexion réussie !");
+            sessionStorage.setItem("token", data.token);
             console.log("Token reçu :", data.token);
+            window.location.href = "/index.html";
         })
         .catch(error => {
             console.error("Erreur :", error.message);
-            alert("Identifiants incorrects !");
+
+            if (!document.getElementById("authError")) {
+                const authError = document.createElement("p");
+                const form = document.getElementById("loginFormElement");
+                authError.textContent = "Identifiants incorrects !";
+                authError.id = "authError";
+                form.appendChild(authError);
+            }
+
         });
 }
 
-// Exécuter la fonction à la fin du chargement de la page
-document.addEventListener("DOMContentLoaded", createLoginForm);
+// Ci dessous, work in progress
+// => Le problème c'est que les fichiers sont pas correctement liés ... login.js s'execute sur login.html et pas sur index.html
+
+
+function handleLogout() {
+    // Supprimer le token du sessionStorage
+    sessionStorage.removeItem("token");
+
+    console.log("Déconnexion réussie. Token supprimé du sessionStorage.");
+
+    // Redirection vers la page de connexion après déconnexion
+    window.location.href = "/index.html"; 
+}
+
+// Assurer que l'élément avec l'ID "logout" existe avant d'ajouter l'événement
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutButton = document.getElementById("logout");
+
+        if (logoutButton) {
+            // Ajouter l'événement "click" au bouton de déconnexion
+            logoutButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                handleLogout();
+            });
+        } else {
+            console.warn("Aucun bouton de déconnexion trouvé.");
+        }
+});
+
+// Admin mode
+// function adminMode("token"){
+//     if (!sessionStorage.)
+//     alors -> changer le login en logout dans la navbarre
+//           -> faire apparaitre une div en haut avec un lien vers la modale
+// }
+
+
+
 
 /*
-1.Lire l'entrée email et password donnée par l'utilisateur, l'associer à une variable ? au format json ?.
-2.Récupérer les identifiants connus via l'api et transformer le resultat en json.
-3.Comparer les deux.
-4.Si les id sont corrects -> Donner un accès à l'utilisateur en stockant un token sur son navigateur dans le localstorage.
-5.Si les id sont incorrects (=/= 200 coté serv) -> Renvoyer une erreur et afficher un message
+. Bannière d'accès modification => modale
+. Gestion du bouton de navigation "login/logout" à l'aide de toggle " https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_class "
+. CSS
+. Commentaires formalisés JS doc
+
+
  */
 

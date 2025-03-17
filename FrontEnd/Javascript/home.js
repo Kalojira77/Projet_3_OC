@@ -71,7 +71,7 @@ function filtreObjet(categoryId){
 
     displayObjet.forEach((element)=> {
         element.style.display = "none";
-        if(categoryId == element.dataset.cat){
+        if(categoryId === element.dataset.cat){
             element.style.display = "block";
         }else{
             if(categoryId == 0){
