@@ -8,8 +8,9 @@ export async function modalContent(){
     const modalButton = document.getElementById("modal-button");
 
     modal.style.display = "flex";
+    modalTitle.innerHTML = "<h3>Galerie Photo</h3>"
 
-    // 1. Récupération des travaux via getWorks()
+    //  Récupération des travaux via getWorks()
     const works = await getWorks();
 
       if (!works || works.length === 0) {
@@ -26,9 +27,8 @@ export async function modalContent(){
           img.src = work.imageUrl;
           img.alt = work.title;
 
-          const icon = document.createElement("span");
-          icon.innerHTML = "❌";
-          icon.classList.add("delete-icon");
+          const icon = document.createElement("i");
+          icon.classList.add("fa-solid", "fa-trash-can", "delete-icon");
 
           workItem.appendChild(img);
           workItem.appendChild(icon);

@@ -118,7 +118,7 @@ export function adminMode() {
     modalLink.href = "#";
 
     const editIcone = document.createElement("i");
-    editIcone.classList.add("fa", "fa-pen-to-square"); 
+    editIcone.classList.add("fa-solid", "fa-pen-to-square"); 
 
     const editText = document.createElement("span");
     editText.id = "editText";
