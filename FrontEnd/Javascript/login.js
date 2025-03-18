@@ -1,4 +1,6 @@
+import { modalContent } from './modal.js'; 
 // Création du formulaire d'authentification dynamiquement
+
 
 function createLoginForm() {
     const container = document.getElementById("loginForm");
@@ -53,7 +55,7 @@ function createLoginForm() {
 }
 
 // Exécuter la fonction à la fin du chargement de la page
-document.addEventListener("DOMContentLoaded", createLoginForm);
+document.addEventListener("DOMContentLoaded", createLoginForm());
 
 // Authentification
 
@@ -86,7 +88,6 @@ function authentification(emailInput, passwordInput){
                 authError.id = "authError";
                 form.appendChild(authError);
             }
-
         });
 }
 
@@ -108,37 +109,32 @@ export function adminMode() {
 
     const adminBanner = document.createElement("div");
     adminBanner.id = "admin-banner";
-    adminBanner.style.position = "fixed";
-    adminBanner.style.top = "0";
-    adminBanner.style.left = "0";
-    adminBanner.style.width = "100%";
-    adminBanner.style.backgroundColor = "black";
-    adminBanner.style.color = "white";
-    adminBanner.style.display = "flex";
-    adminBanner.style.alignItems = "center";
-    adminBanner.style.justifyContent = "center";
-    adminBanner.style.padding = "10px";
+
+
+    // Lien vers la modale
     
-    const editionIcone = document.createElement("i");
-    editionIcone.classList.add("fa", "fa-pen-to-square"); // Icône crayon d'édition
-    editionIcone.style.fontSize = "24px";
-    editionIcone.style.marginRight = "10px";
-    editionIcone.style.color = "white";
+    const modalLink = document.createElement("a");
+    modalLink.id = "modalLink";
+    modalLink.href = "#";
 
-    const editLink = document.createElement("a");
-    editLink.href = "#";
-    editLink.innerText = "Mode édition";
-    editLink.style.color = "white";
-    editLink.style.textDecoration = "none";
+    const editIcone = document.createElement("i");
+    editIcone.classList.add("fa", "fa-pen-to-square"); 
 
-    editLink.addEventListener("click", (event) => {
+    const editText = document.createElement("span");
+    editText.id = "editText";
+    editText.innerText = " Mode édition";
+
+    modalLink.addEventListener("click", (event) => {
         event.preventDefault();
-        console.log("Ouverture de la modale d'édition (à implémenter)");
+        modalContent();
     });
 
-    adminBanner.appendChild(editionIcone);
-    adminBanner.appendChild(editLink);
+    adminBanner.appendChild(modalLink);
+    modalLink.appendChild(editIcone);
+    modalLink.appendChild(editText);
     document.body.prepend(adminBanner);
+
+    // Switch de login -> logout dans la navbar
 
     const login = document.getElementById("login"); 
     login.classList.toggle("displayNone");
@@ -174,7 +170,5 @@ export function setupLogout() {
 . Bannière d'accès modification => modale
 . CSS
 . Commentaires formalisés JS doc
-
-
  */
 
