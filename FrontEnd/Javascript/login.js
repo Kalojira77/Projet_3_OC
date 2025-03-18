@@ -1,4 +1,5 @@
 import { modalContent } from './modal.js'; 
+
 // Création du formulaire d'authentification dynamiquement
 
 
@@ -6,9 +7,8 @@ function createLoginForm() {
     const container = document.getElementById("loginForm");
     if (!container) return;
 
-    // Création du formulaire
     const form = document.createElement("form");
-    form.id = "loginFormElement"; // Ajout d'un ID si besoin
+    form.id = "loginFormElement"; 
 
     const emailLabel = document.createElement("label");
     emailLabel.textContent = "Email : ";
@@ -104,7 +104,7 @@ export function adminMode() {
         const logout = document.getElementById("logout");
         logout.classList.toggle("displayNone");
 
-        return; // Pas de token ou pas sur index.html → on ne fait rien
+        return; 
     }
 
     const adminBanner = document.createElement("div");

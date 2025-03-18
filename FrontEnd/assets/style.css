@@ -176,23 +176,36 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-}
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
 
+/* BUTTONS */
+
+input[type="submit"]{
+	margin : 2em auto ;
+}
+
+.button-general {
+	border: none;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+	padding: 10px;
+}
+
+.filter {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 40px;
+}
 /* ADMIN BANNER */
 
 #admin-banner {

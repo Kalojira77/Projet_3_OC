@@ -44,7 +44,7 @@ export async function createButton(){
         const filterButton = document.createElement('button');
         filterButton.textContent = filterCategory.name;
         filterButton.id = filterCategory.id;
-        filterButton.classList.add("selectAll");
+        filterButton.classList.add("selectAll", "button-general");
 
         filterButton.addEventListener("click", () => {
             filtreObjet(filterCategory.id);
@@ -56,6 +56,7 @@ export async function createButton(){
     const filterButtonTous = document.createElement('button');
     filterButtonTous.textContent = "tous";
     filterButtonTous.id = 0;
+    filterButtonTous.classList.add("button-general")
 
     filterButtonTous.addEventListener("click", () => {
         filtreObjet(filterButtonTous.id);

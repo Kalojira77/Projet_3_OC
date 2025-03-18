@@ -35,4 +35,3 @@ export async function modalContent(){
           modalContent.appendChild(workItem);
       });
   }
-  
