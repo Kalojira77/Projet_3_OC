@@ -14,6 +14,7 @@ adminMode();
 /*
 RESTE A FAIRE :
 
+CSS 
 - Ajouter propriété aux boutons filtres, pour que celui selectionné soit en vert et les autres pas.
 - " " à l'ensemble des boutons : un hover vert foncé.
 - adapter taille de l'icone instagram dans la navbarre
@@ -21,8 +22,9 @@ RESTE A FAIRE :
 - CSS de la modale
 - CSS de la navbarre
 
-- ajout dynamique de la page/modale d'ajout d'une photo
+JS
 - fonctionnalité de suppression dans la modale
+- ajout dynamique de la page/modale d'ajout d'une photo
 - il manque un bouton "modifier" à côté du titre "projet"
 - les boutons de filtrage sont supprimés lorsque la modale est ouverte
 

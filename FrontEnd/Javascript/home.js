@@ -34,6 +34,7 @@ export async function displayWorks(){
     document.addEventListener('DOMContentLoaded', displayWorks);
 }
 
+
 //** CREER LES BOUTONS DE TRI */
 
 export async function createButton(){

@@ -1,4 +1,4 @@
-import { modalContent } from './modal.js'; 
+import { modalOpen } from './modal.js'; 
 
 // Création du formulaire d'authentification dynamiquement
 
@@ -126,7 +126,7 @@ export function adminMode() {
 
     modalLink.addEventListener("click", (event) => {
         event.preventDefault();
-        modalContent();
+        modalOpen();
     });
 
     adminBanner.appendChild(modalLink);
