@@ -40,12 +40,23 @@ export async function displayWorks(){
 export async function createButton(){
     const filtres = document.getElementById('filter');
 
+    
+    const filterButtonTous = document.createElement('button');
+    filterButtonTous.textContent = "tous";
+    filterButtonTous.id = 0;
+    filterButtonTous.classList.add("button-general", "selectAllBtn")
+
+    filterButtonTous.addEventListener("click", () => {
+        filtreObjet(filterButtonTous.id);
+    });
+    filtres.appendChild(filterButtonTous);  
+
     for (const filterCategory of categories) {
         
         const filterButton = document.createElement('button');
         filterButton.textContent = filterCategory.name;
         filterButton.id = filterCategory.id;
-        filterButton.classList.add("selectAll", "button-general");
+        filterButton.classList.add("selectAll", "button-general", "selectAllBtn");
 
         filterButton.addEventListener("click", () => {
             filtreObjet(filterCategory.id);
@@ -54,15 +65,6 @@ export async function createButton(){
         filtres.appendChild(filterButton);   
     }
 
-    const filterButtonTous = document.createElement('button');
-    filterButtonTous.textContent = "tous";
-    filterButtonTous.id = 0;
-    filterButtonTous.classList.add("button-general")
-
-    filterButtonTous.addEventListener("click", () => {
-        filtreObjet(filterButtonTous.id);
-    });
-    filtres.appendChild(filterButtonTous);  
     
 }
 
@@ -84,4 +86,5 @@ function filtreObjet(categoryId){
         }
     })
 }
+
 

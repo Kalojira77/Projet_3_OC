@@ -11,7 +11,7 @@ function createLoginForm() {
     form.id = "loginFormElement"; 
 
     const emailLabel = document.createElement("label");
-    emailLabel.textContent = "Email : ";
+    emailLabel.textContent = "E-mail : ";
     const emailInput = document.createElement("input");
     emailInput.type = "email";
     emailInput.name = "email";
@@ -27,9 +27,11 @@ function createLoginForm() {
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.textContent = "Se connecter";
+    submitButton.classList = "loginBtn";
 
-    const passwordForget = document.createElement("p");
+    const passwordForget = document.createElement("a");
     passwordForget.textContent = "Mot de passe oublié";
+    passwordForget.href = "#";
 
 
     // Ajout des éléments au formulaire
@@ -118,7 +120,7 @@ export function adminMode() {
     modalLink.href = "#";
 
     const editIcone = document.createElement("i");
-    editIcone.classList.add("fa-solid", "fa-pen-to-square"); 
+    editIcone.classList.add("fa-solid", "fa-pen-to-square", "editIcon1"); 
 
     const editText = document.createElement("span");
     editText.id = "editText";
@@ -141,6 +143,12 @@ export function adminMode() {
 
     const logout = document.getElementById("logout");
     logout.classList.toggle("displayBlock");
+
+    const filter = document.getElementById('filter');
+    filter.style.display = "none";
+
+    const modification = document.getElementById('modification');
+    modification.style.display = "flex";
 }
 
 

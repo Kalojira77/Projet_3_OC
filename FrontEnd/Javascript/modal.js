@@ -152,6 +152,7 @@ function modalReturn(){
 // Fonction qui récupère les informations dans le formulaire de la 2nd modale et les envoie vers addWork ./api/works
 
 function getFormContent () {
+  console.log("entrée")
   document.getElementById("submit-btn").addEventListener("click", async function(event) {
     event.preventDefault();
 
@@ -172,9 +173,11 @@ function getFormContent () {
   })
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  getFormContent();
+  modalGetCategory();
+});
 
-modalGetCategory();
-getFormContent();
 
 
 
