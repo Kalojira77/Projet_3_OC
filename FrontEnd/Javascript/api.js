@@ -42,7 +42,8 @@ export async function addWork(title, selectedImage, categoryId) {
       method: "POST",
       body: formData,
       headers: {
-        "Authorization": "Bearer " + sessionStorage.getItem("token"),
+        Accept : "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
     });
 
@@ -67,7 +68,7 @@ export async function deleteWork(id) {
 
     if (!response.ok) {
       console.error("Erreur lors de la suppression:", response.status);
-      return;
+      return; // throw new Error
     }
 
     console.log(`Work ${id} supprimé avec succès`);

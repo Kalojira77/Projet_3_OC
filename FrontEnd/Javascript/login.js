@@ -1,4 +1,4 @@
-import { modalOpen } from './modal.js'; 
+import { modalOpen } from './modal.js';  //MODIFIED: Attention à ne pas importé
 
 // Création du formulaire d'authentification dynamiquement
 
@@ -15,6 +15,7 @@ function createLoginForm() {
     const emailInput = document.createElement("input");
     emailInput.type = "email";
     emailInput.name = "email";
+    emailInput.classList = "login-input";
     emailInput.required = true;
 
     const passwordLabel = document.createElement("label");
@@ -22,6 +23,7 @@ function createLoginForm() {
     const passwordInput = document.createElement("input");
     passwordInput.type = "password";
     passwordInput.name = "password";
+    passwordInput.classList = "login-input";
     passwordInput.required = true;
 
     const submitButton = document.createElement("button");
@@ -125,6 +127,18 @@ export function adminMode() {
     const editText = document.createElement("span");
     editText.id = "editText";
     editText.innerText = " Mode édition";
+
+    // Ajout du bouton de modal sur "modifier"
+    const modif_modal = document.getElementById("modif-open-modal");
+    const modifBtn = document.getElementById("modif-btn");
+
+    modifBtn.style.display = "flex";
+
+    modif_modal.addEventListener("click", (event) => {
+        event.preventDefault();
+        modalOpen();
+    });
+   
 
     modalLink.addEventListener("click", (event) => {
         event.preventDefault();

@@ -3,6 +3,7 @@ import { displayWorks } from './home.js';
 import { createButton } from './home.js';
 import { setupLogout } from './login.js';
 import { adminMode } from './login.js';
+import { getFormContent } from './modal.js';
 
 
 // Appeler les fonctions et afficher les résultats dans la console
@@ -10,22 +11,18 @@ createButton();
 displayWorks();
 setupLogout();
 adminMode();
+document.getElementById("submit-btn").addEventListener("click", (event) => getFormContent(event)
+);
 
 /*
 RESTE A FAIRE :
 
+Vérifier les liens
+
 CSS 
-- Ajouter propriété aux boutons filtres, pour que celui selectionné soit en vert et les autres pas. FAIT
-- " " à l'ensemble des boutons : un hover vert foncé. [FAIT]
-- adapter taille de l'icone instagram dans la navbarre [FAIT]
-- CSS de la page login [EN COURS]
-- CSS de la modale 
-- CSS de la navbarre [FAIT]
+- le formulaire login (Ajuster la police d'écriture, améliorer l'affichage de l'erreur en cas de mauvais identifiants)
+- la modale 1 et 2
 
-JS
-- fonctionnalité de suppression dans la modale
-- ajout dynamique de la page/modale d'ajout d'une photo
-- il manque un bouton "modifier" à côté du titre "projet"
-- les boutons de filtrage sont supprimés lorsque la modale est ouverte [FAIT]
-
+JS 
+- faire une redirection vers la page d'acceuil ou la modale quand on ajoute une image (voir les consignes du projet)
 */

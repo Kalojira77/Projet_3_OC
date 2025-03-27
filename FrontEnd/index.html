@@ -16,7 +16,7 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li><a href="portfolio">projets</a></li>
+			<li><a href="#portfolio">projets</a></li>
 			<li><a href="#contact">contact</a></li>
 			<li>
 				<a href="login.html" id="login">login</a>
@@ -39,8 +39,17 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div class="modification" id="modification"><i class="fa-solid fa-pen-to-square">modifier</i></div>
+		
+		<div class="modification" id="modification">
+			<div class="fantom"></div>
+			<div><h2>Mes Projets</h2></div>
+			<div class="conteneurModif">
+				<div id="modif-btn"><i class="fa-solid fa-pen-to-square"></i>
+			<!-- Identification de l'ID -->
+			<span id="modif-open-modal">modifier</span></div>
+			</div>
+		</div>
+
 		<div class="filter" id="filter"></div>
 		<div class="gallery" id="gallery">
 			<!-- ajout de contenu dynamique avec JS-->
@@ -60,7 +69,7 @@
 		</form>
 	</section>
 
-	<!-- <div id="overlay" class="overlay"></div> -->
+	<div id="overlay" class="overlay"></div>
 	<aside id="modal" role="dialog" aria-labelledby="modal-title"> 
 		<div class="modal-wrapper">
 			<div id="first-modal">
@@ -95,12 +104,12 @@
 					<div class="form-group">
 						<label for="category">Catégorie :</label>
 						<select id="category" name="category" required>
-							<option value="">-- Sélectionnez une catégorie --</option>
+							<option value="1" selected>-- Sélectionnez une catégorie --</option>
 							<!-- ajout dynamique des catégories -->
 						</select>
 					</div>
 					<br>			
-					<button type="submit" id="submit-btn" class="button-general">Valider</button>
+					<button id="submit-btn" class="button-general">Valider</button>
 				</form>
 			</div>
 
@@ -117,6 +126,6 @@
 		</ul>
 	</nav>
 </footer>
-	<script src="/Javascript/main.js" type="module"></script>
+	<script src="./Javascript/main.js" type="module"></script>
 </body>
 </html>

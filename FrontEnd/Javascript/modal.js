@@ -4,10 +4,13 @@
 // Import des fonctions depuis api.js
 
 import { getCategories, getWorks, addWork, deleteWork } from './api.js'; 
+import { displayWorks } from './home.js';
 
 // Declaration des variables globales
 
-const works = await getWorks();
+// variable works en let pour redefinir la variable après
+let works = await getWorks();
+
 
 const modal = document.getElementById("modal");
 const modalFirst = document.getElementById("first-modal");
@@ -20,14 +23,21 @@ const modalContent = document.getElementById("modal-content");
 // fonction qui ouvre la modale
 
 export async function modalOpen(){
-   
+    
       if (modalFirstBtn) {
         modalFirstBtn.addEventListener("click", () => {
           modalSwitch();
         });
       }
-    
-    // overlay.style.display = "block";
+      // Ajout du clic sur le fond pour fermer la modale
+      document.body.addEventListener("click", (event) => {
+        const modal = document.querySelector("#modal");
+        if (event.target === modal) {
+          modalHide();
+        }
+      });
+
+    overlay.style.display = "block";
     modal.style.display = "flex";
     modalFirst.style.display ="block";
     modalSecond.style.display ="none";
@@ -42,7 +52,8 @@ export async function modalOpen(){
 
 async function modalGallery(){
     console.log("génération de la galerie")
-
+    // Vidage de la galerie avant de la remplir
+    modalContent.innerHTML = "";
     if (!works || works.length === 0) {
         modalContent.innerHTML = "<p>Aucun travail disponible.</p>";
         return;
@@ -65,7 +76,7 @@ async function modalGallery(){
           const workId = work.id;
           console.log("Suppression de l'élément avec l'ID :", workId);
           await deleteWork(workId);
-          updateGallery();
+
         });
 
         workItem.appendChild(img);
@@ -74,14 +85,20 @@ async function modalGallery(){
     });
   }
 
+
+
+
+
 // Fonction qui ferme la modale
 
 function modalHide(){
-  if (modal /*&& overlay*/) {
-    modal.style.display = "none";  
+  console.log(overlay);
+  console.log(modal);
+     modal.style = "display : none";  
+
     overlay.style.display = "none";  
   }
-}
+
 
 // Fonction permettant de donner les conditions d'execution de la fonction de fermeture de la modale (ne fonctionne pas avec l'overlay)
 
@@ -98,14 +115,15 @@ function modalClose(){
       closeIcon2.addEventListener("click", modalHide);
       console.log("-> icone2")
     }
-    // if (overlay) {
-    //   overlay.addEventListener("click", (event) => {
-    //     console.log("overlay event");
-    //     if (event.target === overlay){
-    //       modalHide();
-    //     }
-    //   });
-    // }         
+    if (overlay) {
+      window.addEventListener("click", (event) => {
+        if (event.target.id === "overlay"){
+          console.log("overlay event");
+          modalHide();
+        }
+
+      });
+    }         
 };
 
 
@@ -151,11 +169,8 @@ function modalReturn(){
 
 // Fonction qui récupère les informations dans le formulaire de la 2nd modale et les envoie vers addWork ./api/works
 
-function getFormContent () {
-  console.log("entrée")
-  document.getElementById("submit-btn").addEventListener("click", async function(event) {
+export async function getFormContent (event) {
     event.preventDefault();
-
     const fileInput = document.getElementById("photo");
     const titleInput = document.getElementById("title");
     const categoryInput = document.getElementById("category");
@@ -166,17 +181,18 @@ function getFormContent () {
       const categoryId = categoryInput.value;
 
       await addWork(title, selectedImage, categoryId);
+      works = await getWorks();
+      modalGallery();
+      displayWorks();
 
     } else {
       console.error("Aucune image sélectionnée");
     }
-  })
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  getFormContent();
-  modalGetCategory();
-});
+
+modalGetCategory();
+
 
 
 
