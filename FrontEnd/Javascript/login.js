@@ -43,7 +43,9 @@ function createLoginForm() {
     form.appendChild(passwordLabel);
     form.appendChild(passwordInput);
     form.appendChild(document.createElement("br"));
+    form.appendChild(document.createElement("br"));
     form.appendChild(submitButton);
+    form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
     form.appendChild(passwordForget);
     
@@ -88,6 +90,9 @@ function authentification(emailInput, passwordInput){
             if (!document.getElementById("authError")) {
                 const authError = document.createElement("p");
                 const form = document.getElementById("loginFormElement");
+                form.appendChild(document.createElement("br"));
+                form.appendChild(document.createElement("br"));
+                form.appendChild(document.createElement("br"));
                 authError.textContent = "Identifiants incorrects !";
                 authError.id = "authError";
                 form.appendChild(authError);
@@ -187,10 +192,4 @@ export function setupLogout() {
 
 
 
-
-/*
-. Bannière d'accès modification => modale
-. CSS
-. Commentaires formalisés JS doc
- */
 

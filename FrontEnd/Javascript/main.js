@@ -18,6 +18,7 @@ document.getElementById("submit-btn").addEventListener("click", (event) => getFo
 RESTE A FAIRE :
 
 Vérifier les liens
+Faire des commentaires JSdoc ?
 
 CSS 
 - le formulaire login (Ajuster la police d'écriture, améliorer l'affichage de l'erreur en cas de mauvais identifiants)
