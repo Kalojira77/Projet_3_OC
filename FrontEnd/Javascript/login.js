@@ -1,4 +1,4 @@
-import { modalOpen } from './modal.js';  //MODIFIED: Attention à ne pas importé
+import { modalOpen } from './modal.js';  
 
 // Création du formulaire d'authentification dynamiquement
 
@@ -81,7 +81,6 @@ function authentification(emailInput, passwordInput){
         })
         .then(data => {
             sessionStorage.setItem("token", data.token);
-            console.log("Token reçu :", data.token);
             window.location.href = "/index.html";
         })
         .catch(error => {
@@ -187,7 +186,6 @@ export function setupLogout() {
         console.log("Déconnexion réussie. Token supprimé du sessionStorage.");
         window.location.href = "/index.html"; 
     });
-
 }
 
 

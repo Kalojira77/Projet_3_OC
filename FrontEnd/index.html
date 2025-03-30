@@ -77,21 +77,25 @@
 				<i class="fa-solid fa-xmark close-icon" id="close-icon1"></i>
 				<div id="modal-content"></div>
 				</br>
-				<button id="modal-button" class="button-general">Ajouter une photo</button>
+				<div class="modal-btn">
+					<button id="modal-button" class="button-general">Ajouter une photo</button>
+				</div>
 			</div>
 
 			<div id="second-modal">
 				<i class="fa-solid fa-arrow-left" id="return"></i>
 				<h3>Ajouter photo</h3>
 				<i class="fa-solid fa-xmark close-icon" id="close-icon2"></i>
+
 				<form id="add-photo-form">
 					<div id="drop-zone">
 						<input type="file" id="photo" name="photo" accept="image/png, image/jpeg" hidden>
 						<label for="photo" id="drop-label">
-							<i class="fa-solid fa-image"></i>
-							<p>Glissez-déposez une image ici ou</p>
-							<button type="button" id="upload-button">Ajouter photo</button>
-							<p class="file-info">jpg, png, 4Mo max</p>
+							<div id="select-img">
+								<i class="fa-solid fa-image"></i>
+								<button type="button" id="upload-button">+ Ajouter photo</button>
+								<p class="file-info">jpg, png, 4Mo max</p>
+							</div>
 						</label>
 						<img id="preview-image" src="" alt="Aperçu de l'image" style="display: none;">
 					</div>
@@ -109,8 +113,12 @@
 						</select>
 					</div>
 					<br>			
-					<button id="submit-btn" class="button-general">Valider</button>
+					<div class="modal-btn">
+						<button id="submit-btn" class="button-general">Valider</button>
+					</div>
+					
 				</form>
+				
 			</div>
 
 		</div>

@@ -97,6 +97,8 @@ h2{
 	font-size: 30px;
 	color: var(--primary-color);
 }
+
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -187,9 +189,11 @@ nav li img{
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -344,18 +348,40 @@ input[type="submit"]{
 	overflow: auto;
 }
 
+
+#modal-content {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 30px 10px;
+	margin: 0px 100px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid grey;
+}
+
+#modal-content img {
+	width: 100%;
+}
+
+.modal-btn {
+	width: 420px;
+	height: 100px;
+	border: 2px solid red;
+}
+
 .modal-wrapper {
 	background-color: #fff;
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
 	border-radius: 10px;
-	max-width: 630px;
+	width: 630px;
+	height: 670px;
 	text-align: center;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-around;
 }
 
 #modalLink {
@@ -367,6 +393,110 @@ input[type="submit"]{
 	font-size: 17px;
 	color: white;
 }
+
+.file-info {
+	margin-bottom: 10px;
+}
+
+
+#modal-button {
+	width: 237px;
+	height: 36px;
+	padding: 10px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.form-group form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	padding-bottom: 10px;
+}
+
+.form-group input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.form-group select {
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#upload-button {
+	border: none;
+	font-family: 'Syne';
+	font-weight: 500;
+	font-size: 14px;
+	color: #306685;
+	background-color: #CBD6DC;
+	width: 173px;
+	height: 36px;
+	text-align: center;
+	border-radius: 50px ;
+	padding: 10px;
+	margin: 10px;
+	cursor: pointer;
+}
+
+#submit-btn {
+	width: 237px;
+    height: 36px;
+    padding: 10px;
+	background-color: #CBD6DC;
+}
+
+#drop-zone {
+	margin: 50px;
+	width: 420px;
+	height: 169px;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+#select-img {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#drop-zone .fa-solid {
+	width: 76px;
+	height: 76px;
+	font-size: 76px;
+	color: #B9C5CC;
+}
+
+#preview-image {
+    max-width: 100%;  /* Ne dépasse pas la largeur du conteneur */
+    max-height: 169px; /* Ajuste la hauteur max (modifiable selon tes besoins) */
+    object-fit: contain; /* Empêche l’image d’être déformée */
+    display: block; /* Évite les espaces vides sous l’image */
+    margin: 0 auto; /* Centre l’image dans le conteneur */
+}
+
+/* #modal-title {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	size: 26px;
+} */
+
 
 /* Bouton modifier */
 
@@ -381,6 +511,7 @@ input[type="submit"]{
 #modif-btn {
 	display: none;
 	align-items: center;
+	cursor: pointer;
 }
 
 .conteneurModif {
@@ -431,17 +562,6 @@ input[type="submit"]{
 
 .work-item {
 	position: relative;
-}
-
-#modal-content {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-	gap: 30px 10px;
-	padding: 10px;
-}
-
-#modal-content img {
-	width: 100%;
 }
 
 .delete-icon {

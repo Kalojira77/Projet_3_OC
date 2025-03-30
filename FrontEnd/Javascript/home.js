@@ -13,7 +13,6 @@ export async function displayWorks(){
     const works = await getWorks();
     const gallery = document.getElementById('gallery');
     
-    // MODIFIED : Vidage de la galerie avant de la remplir
     gallery.innerHTML = '';
 
     for (const work of works) {
