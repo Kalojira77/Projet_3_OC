@@ -38,7 +38,7 @@ export async function modalOpen(){
 
   overlay.style.display = "block";
   modal.style.display = "flex";
-  modalFirst.style.display ="block";
+  modalFirst.style.display ="flex";
   modalSecond.style.display ="none";
   modalTitle.innerHTML = "<h3>Galerie Photo</h3>"
 
@@ -137,7 +137,7 @@ function modalClose(){
 
 function modalSwitch(){
   modalFirst.style.display = "none";
-  modalSecond.style.display = "block";
+  modalSecond.style.display = "flex";
 }
 
 export async function modalGetCategory() {
@@ -167,7 +167,7 @@ function modalReturn(){
 
   if (returnBtn) {
     returnBtn.addEventListener("click", () => {
-      modalFirst.style.display = "block";   
+      modalFirst.style.display = "flex";   
       modalSecond.style.display = "none";  
     });
   }

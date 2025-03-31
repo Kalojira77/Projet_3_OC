@@ -362,10 +362,27 @@ input[type="submit"]{
 	width: 100%;
 }
 
+.modal-title {
+	display: flex;
+	height: 83px;
+	border: 2px solid red;
+	font-size: x-large;
+	font-weight: 500;
+}
+
+.modal-content {
+	display: flex;
+	height: 400px;
+	border: 2px solid red;
+}
+
 .modal-btn {
 	width: 420px;
-	height: 100px;
+	height: 83px;
 	border: 2px solid red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .modal-wrapper {
@@ -381,7 +398,18 @@ input[type="submit"]{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+}
+
+#first-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#second-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #modalLink {
@@ -405,22 +433,26 @@ input[type="submit"]{
 	padding: 10px;
 }
 
+.add-photo-form {
+	display: flex;
+	flex-direction: column;
+}
+
 .form-group {
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
+	/* padding: 10px; */
 }
 
-.form-group form {
+/* .form-group form {
 	text-align: left;
-	margin-top:30px;
 	display: flex;
 	flex-direction: column;
-}
-
+} */
+/* 
 .form-group label {
 	padding-bottom: 10px;
-}
+} */
 
 .form-group input {
 	height: 50px;
@@ -484,18 +516,12 @@ input[type="submit"]{
 }
 
 #preview-image {
-    max-width: 100%;  /* Ne dépasse pas la largeur du conteneur */
-    max-height: 169px; /* Ajuste la hauteur max (modifiable selon tes besoins) */
-    object-fit: contain; /* Empêche l’image d’être déformée */
-    display: block; /* Évite les espaces vides sous l’image */
-    margin: 0 auto; /* Centre l’image dans le conteneur */
+    max-width: 100%;  
+    max-height: 169px; 
+    object-fit: contain; 
+    display: block; 
+    margin: 0 auto; 
 }
-
-/* #modal-title {
-	font-family: 'Work Sans';
-	font-weight: 400;
-	size: 26px;
-} */
 
 
 /* Bouton modifier */
