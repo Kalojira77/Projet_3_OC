@@ -1,7 +1,7 @@
-// Gestion des appels API
+/**  Gestion des appels API */
 
 
-// Fonction pour récupérer les catégories
+/** Fonction pour récupérer les catégories */
 
 export async function getCategories() {
   try {
@@ -14,7 +14,7 @@ export async function getCategories() {
   
 }
 
-// Fonction qui récupère le contenu de Works
+/** Fonction qui récupère le contenu de Works */
 
 export async function getWorks() {
   try {
@@ -27,7 +27,7 @@ export async function getWorks() {
 }
 
 
-// fonction qui ajoute le nouveau projet à Works.
+/** fonction qui ajoute le nouveau projet à Works. */
 
 export async function addWork(title, selectedImage, categoryId) {
   console.log(selectedImage + "/" + title + "/" + categoryId);
@@ -55,7 +55,7 @@ export async function addWork(title, selectedImage, categoryId) {
   }
 };
 
-// Fonction qui supprime le projet selon son id dans Works
+/** Fonction qui supprime le projet selon son id dans Works */
 
 export async function deleteWork(id) {
   try {
@@ -68,7 +68,7 @@ export async function deleteWork(id) {
 
     if (!response.ok) {
       console.error("Erreur lors de la suppression:", response.status);
-      return; // throw new Error
+      return; 
     }
 
     console.log(`Work ${id} supprimé avec succès`);

@@ -1,6 +1,9 @@
+/** PAGE LOGIN */
+
 import { modalOpen } from './modal.js';  
 
-// Création du formulaire d'authentification dynamiquement
+
+/** Création du formulaire d'authentification dynamiquement */
 
 
 function createLoginForm() {
@@ -30,6 +33,8 @@ function createLoginForm() {
     submitButton.type = "submit";
     submitButton.textContent = "Se connecter";
     submitButton.classList = "loginBtn";
+    
+
 
     const passwordForget = document.createElement("a");
     passwordForget.textContent = "Mot de passe oublié";
@@ -63,7 +68,7 @@ function createLoginForm() {
 // Exécuter la fonction à la fin du chargement de la page
 document.addEventListener("DOMContentLoaded", createLoginForm());
 
-// Authentification
+/** Authentification */
 
 function authentification(emailInput, passwordInput){
     fetch("http://localhost:5678/api/users/login", {
@@ -99,7 +104,7 @@ function authentification(emailInput, passwordInput){
         });
 }
 
-// Admin mode
+/** Admin mode */
 
 export function adminMode() {
     const token = sessionStorage.getItem("token");
@@ -171,7 +176,7 @@ export function adminMode() {
 
 
 
-// Supprimer le token du sessionStorage
+/** Supprimer le token du sessionStorage */
 export function setupLogout() {
     const logoutButton = document.getElementById("logout");
 
