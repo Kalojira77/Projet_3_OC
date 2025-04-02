@@ -63,7 +63,7 @@ async function modalGallery(){
 }
 
 function worksUpdate(works){
-  
+  console.log("worksUpdate")
   works.forEach(work => {
       const workItem = document.createElement("div");
       workItem.classList.add("work-item");
@@ -127,7 +127,6 @@ function modalClose(){
           console.log("overlay event");
           modalHide();
         }
-
       });
     }         
 };
@@ -138,6 +137,8 @@ function modalClose(){
 function modalSwitch(){
   modalFirst.style.display = "none";
   modalSecond.style.display = "flex";
+
+  // formCheck();
 }
 
 export async function modalGetCategory() {
@@ -204,20 +205,60 @@ export async function getFormContent (event) {
 }
 
 /**  switch entre l'affichage [ajout photo] et [la preview] */
+
 function updatePreview(imageSrc) {
   const imagePreview = document.getElementById("preview-image");
   const selectImage = document.getElementById("select-img");
 
   if (imagePreview) {
-    imagePreview.src = imageSrc;
-    imagePreview.alt = "Aperçu de l'image";
-    imagePreview.style.display = "flex";
-  }
+      imagePreview.src = imageSrc;
+      imagePreview.alt = "Aperçu de l'image";
+      imagePreview.style.display = "block";
+      imagePreview.style.position = "relative"; // S'assure que l'image est bien positionnée
 
-  if (selectImage) {
-    selectImage.style.display = "none";
+      // Cache la zone de sélection d'image
+      if (selectImage) {
+          selectImage.style.display = "none";
+      }
+
+      // // Vérifie si l'icône existe déjà, sinon on la crée
+      // let crossIcon = document.querySelector(".cross-icon");
+      // if (!crossIcon) {
+      //     crossIcon = document.createElement("i");
+      //     crossIcon.classList.add("fa-solid", "fa-xmark", "cross-icon");
+
+      //     // Ajoute un événement pour supprimer l'image lorsqu'on clique sur la croix
+      //     crossIcon.addEventListener("click", resetForm);
+
+      //     // Ajoute la croix dans le drop-zone (elle sera positionnée sur l'image)
+      //     dropZone.appendChild(crossIcon);
+      // }
   }
 }
+
+// function resetForm() {
+//   const form = document.getElementById("add-photo-form");
+//   form.reset(); 
+
+//   const imagePreview = document.getElementById("preview-image");
+//   if (imagePreview) {
+//       imagePreview.style.display = "none"; // Cache l’image
+//   }
+
+//   const selectImage = document.getElementById("select-img");
+//   if (selectImage) {
+//       selectImage.style.display = "flex"; // Réaffiche la zone de sélection
+//   }
+
+//   // Supprime l’icône croix si elle existe
+//   const crossIcon = document.querySelector(".cross-icon");
+//   if (crossIcon) {
+//       crossIcon.remove();
+//   }
+// }
+
+
+
 
 /** Fonction qui récupère l'input file et le rend lisible directement par le navigateur sans upload */
 function readFile(file, callback) {
@@ -239,20 +280,46 @@ function imagePreview(event) {
   readFile(file, (imageSrc) => updatePreview(imageSrc, "Aperçu de l'image"));
 }
 
+/* Fonction qui active/désactive le bouton valider */
 
+/* ------------------------------------------------------------- */
+// function formCheck() {
+//   console.log("formCheck")
+//   const fileInput = document.getElementById("photo");
+//   const titleInput = document.getElementById("title");
+//   const categoryInput = document.getElementById("category");
+//   const submitBtn = document.getElementById("submit-btn");
+
+//   if (fileInput.files.length > 0 && titleInput.value.trim() !== "" && categoryInput.value !== "") {
+//     submitBtn.disabled = false; // Active le bouton
+//   } else {
+//     submitBtn.disabled = true; // Désactive le bouton
+//   }
+// }
+
+
+
+/* ------------------------------------------------------------- */
 
 export function setEventModal() {
-/* simule l'évenement de click sur la zone de drop de fichier et l'associe au bouton -modale2- */
-document.getElementById("upload-button").addEventListener("click", function () {
-  document.getElementById("photo").click(); 
-});
+  /* simule l'évenement de click sur la zone de drop de fichier et l'associe au bouton -modale2- */
+  document.getElementById("upload-button").addEventListener("click", function () {
+    document.getElementById("photo").click(); 
+  });
 
-/* en cas de modif de l'input id=photo lancer fonction imagePreview */
-document.getElementById("photo").addEventListener("change", imagePreview);
+  /* en cas de modif de l'input id=photo lancer fonction imagePreview */
+  document.getElementById("photo").addEventListener("change", imagePreview);
 
-/* quand on click sur le submit-btn -modale2- on lance la fonction getFormContent */
-document.getElementById("submit-btn").addEventListener("click", (event) => getFormContent(event)
-);
+
+
+  // // Ajouter les écouteurs d'événements
+  // document.getElementById("photo").addEventListener("change", formCheck);
+  // document.getElementById("title").addEventListener("input", formCheck);
+  // document.getElementById("category").addEventListener("change", formCheck);
+
+  /* quand on click sur le submit-btn -modale2- on lance la fonction getFormContent */
+  document.getElementById("submit-btn").addEventListener("click", (event) => getFormContent(event)
+  );
 }
 
 

@@ -81,7 +81,7 @@
 
 				<div id="modal-content" class="modal-content"></div>
 
-				<div class="modal-btn">
+				<div class="modal-btn" id="first-btn">
 					<button id="modal-button" class="button-general">Ajouter une photo</button>
 				</div>
 
@@ -101,7 +101,7 @@
 							<input type="file" id="photo" name="photo" accept="image/png, image/jpeg" hidden>
 							<label for="photo" id="drop-label">
 								<div id="select-img">
-									<i class="fa-solid fa-image"></i>
+									<i class="fa-regular fa-image"></i>
 									<button type="button" id="upload-button">+ Ajouter photo</button>
 									<p class="file-info">jpg, png, 4Mo max</p>
 								</div>
@@ -110,26 +110,23 @@
 						</div>
 						<br>
 						<div class="form-group">
-							<label for="title">Titre :</label>
+							<label for="title">Titre</label>
 							<input type="text" id="title" name="title" required>
 						</div>
 						<br>			
 						<div class="form-group">
-							<label for="category">Catégorie :</label>
+							<label for="category">Catégorie</label>
 							<select id="category" name="category" required>
 								<option value="1" selected>-- Sélectionnez une catégorie --</option>
 								<!-- ajout dynamique des catégories -->
 							</select>
 						</div>	
+					</form>
 						<div class="modal-btn">
 							<button id="submit-btn" class="button-general">Valider</button>
-						</div>			
-					</form>
-				</div>	
-
-							
+						</div>	
+				</div>				
 			</div>
-
 		</div>
 	</aside>
 
