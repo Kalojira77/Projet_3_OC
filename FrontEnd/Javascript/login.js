@@ -3,7 +3,7 @@
 import { modalOpen } from './modal.js';  
 
 
-/** Création du formulaire d'authentification dynamiquement */
+/** Création du formulaire d'authentification */
 
 
 function createLoginForm() {
@@ -40,8 +40,6 @@ function createLoginForm() {
     passwordForget.textContent = "Mot de passe oublié";
     passwordForget.href = "#";
 
-
-    // Ajout des éléments au formulaire
     form.appendChild(emailLabel);
     form.appendChild(emailInput);
     form.appendChild(document.createElement("br"));
@@ -54,18 +52,14 @@ function createLoginForm() {
     form.appendChild(document.createElement("br"));
     form.appendChild(passwordForget);
     
-
-    // Ajout du formulaire au container
     container.appendChild(form);
 
-    // Gestion de l'envoi du formulaire
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         authentification(emailInput.value, passwordInput.value);
     });
 }
 
-// Exécuter la fonction à la fin du chargement de la page
 document.addEventListener("DOMContentLoaded", createLoginForm());
 
 /** Authentification */
@@ -116,15 +110,11 @@ export function adminMode() {
 
         const logout = document.getElementById("logout");
         logout.classList.toggle("displayNone");
-
         return; 
     }
 
     const adminBanner = document.createElement("div");
     adminBanner.id = "admin-banner";
-
-
-    // Lien vers la modale
     
     const modalLink = document.createElement("a");
     modalLink.id = "modalLink";
@@ -137,7 +127,6 @@ export function adminMode() {
     editText.id = "editText";
     editText.innerText = " Mode édition";
 
-    // Ajout du bouton de modal sur "modifier"
     const modif_modal = document.getElementById("modif-open-modal");
     const modifBtn = document.getElementById("modif-btn");
 
@@ -147,7 +136,6 @@ export function adminMode() {
         event.preventDefault();
         modalOpen();
     });
-   
 
     modalLink.addEventListener("click", (event) => {
         event.preventDefault();
@@ -158,8 +146,6 @@ export function adminMode() {
     modalLink.appendChild(editIcone);
     modalLink.appendChild(editText);
     document.body.prepend(adminBanner);
-
-    // Switch de login -> logout dans la navbar
 
     const login = document.getElementById("login"); 
     login.classList.toggle("displayNone");
@@ -174,9 +160,8 @@ export function adminMode() {
     modification.style.display = "flex";
 }
 
-
-
 /** Supprimer le token du sessionStorage */
+
 export function setupLogout() {
     const logoutButton = document.getElementById("logout");
 
@@ -188,7 +173,6 @@ export function setupLogout() {
     logoutButton.addEventListener("click", (event) => {
         event.preventDefault();
         sessionStorage.removeItem("token");
-        console.log("Déconnexion réussie. Token supprimé du sessionStorage.");
         window.location.href = "/index.html"; 
     });
 }

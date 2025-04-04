@@ -41,22 +41,25 @@ export async function modalOpen() {
   modalReturn();
 }
 
+
+
 /** Fonction qui créer la galerie dans la première modale */
 
 async function modalGallery() {
-  console.log("génération de la galerie");
   modalContent.innerHTML = "";
+  works = await getWorks(); 
   if (!works || works.length === 0) {
-    modalContent.innerHTML = "<p>Aucun travail disponible.</p>";
-    return;
+      modalContent.innerHTML = "<p>Aucun travail disponible.</p>";
+      return;
   }
-  modalContent.innerHTML = "";
-  worksUpdate(works);
-  displayWorks();
+  worksUpdate(works); 
 }
 
+
 function worksUpdate(works) {
-  console.log("worksUpdate");
+
+  modalContent.innerHTML = ""; 
+
   works.forEach((work) => {
     const workItem = document.createElement("div");
     workItem.classList.add("work-item");
@@ -69,10 +72,11 @@ function worksUpdate(works) {
     deleteIcon.classList.add("fa-solid", "fa-trash-can", "delete-icon");
     deleteIcon.setAttribute("data-id", work.id);
 
-    deleteIcon.addEventListener("click", async (element) => {
-      await deleteWork(element.target.dataset.id);
-      deleteParentByDatasetId(element.target);
-      displayWorks();
+
+    deleteIcon.addEventListener("click", async (event) => {
+  
+      await deleteParentByDatasetId(event.currentTarget);
+    
     });
     workItem.appendChild(img);
     workItem.appendChild(deleteIcon);
@@ -80,9 +84,19 @@ function worksUpdate(works) {
   });
 }
 
-function deleteParentByDatasetId(child) {
-  child.parentElement.remove();
+async function deleteParentByDatasetId(child) {
+  const id = child.dataset.id;
+  if (id) {
+      await deleteWork(id);
+      child.parentElement.remove();
+      works = await getWorks();
+      await modalGallery(); 
+      displayWorks();
+  } else {
+      console.error("L'élément n'a pas de dataset.id défini.", child);
+  }
 }
+
 
 /** Fonction qui ferme la modale */
 
@@ -91,7 +105,6 @@ function modalHide() {
   overlay.style.display = "none";
 }
 
-/** conditions d'execution de fermeture de la modale  */
 
 function modalClose() {
   const closeIcon1 = document.getElementById("close-icon1");
@@ -132,7 +145,7 @@ export async function modalGetCategory() {
         categorySelector.appendChild(option);
       });
     } else {
-      console.log("Aucune catégorie disponible");
+      console.error("Aucune catégorie disponible");
     }
   } catch (error) {
     return;
@@ -152,7 +165,7 @@ function modalReturn() {
   }
 }
 
-/** Fonction qui récupère les informations dans le formulaire de la 2nd modale et les envoie vers addWork ./api/works */
+/** Ajout de travaux */
 
 export async function getFormContent(event) {
   event.preventDefault();
@@ -204,19 +217,16 @@ function updatePreview(imageSrc) {
     imagePreview.src = imageSrc;
     imagePreview.alt = "Aperçu de l'image";
     imagePreview.style.display = "block";
-    imagePreview.style.position = "relative"; // S'assure que l'image est bien positionnée
-
-    // Cache la zone de sélection d'image
+    imagePreview.style.position = "relative"; 
+    
     if (selectImage) {
       selectImage.style.display = "none";
     }
 
-    // Vérifie si l'icône existe déjà, sinon on la crée
     let crossIcon = document.getElementById("crossIcon");
 
     if (imagePreview.style.display == "block") {
       crossIcon.style.display = "flex";
-      // Ajoute un événement pour supprimer l'image lorsqu'on clique sur la croix
       crossIcon.addEventListener("click", resetForm);
     }
   }
@@ -230,12 +240,12 @@ function resetForm() {
 
   const imagePreview = document.getElementById("preview-image");
   if (imagePreview) {
-    imagePreview.style.display = "none"; // Cache l’image
+    imagePreview.style.display = "none"; 
   }
 
   const selectImage = document.getElementById("select-img");
   if (selectImage) {
-    selectImage.style.display = "flex"; // Réaffiche la zone de sélection
+    selectImage.style.display = "flex"; 
   }
   let crossIcon = document.getElementById("crossIcon");
   crossIcon.style.display = "none";
@@ -243,36 +253,31 @@ function resetForm() {
 
 /** Fonction qui récupère l'input file et le rend lisible directement par le navigateur sans upload */
 function readFile(file, callback) {
-  /* vérifie si un fichier est transmis || si c'est bien une image */
   if (!file || !file.type.startsWith("image/")) {
     console.warn("Fichier non valide. Veuillez sélectionner une image.");
     return;
   }
 
-  /* transforme le fichier en chaine de caractère qui peut être affiché par le navigateur*/
   const reader = new FileReader();
   reader.onload = (event) => callback(event.target.result);
   reader.readAsDataURL(file);
 }
 
-/* execute readFile puis updatePreview en transmettant les données necessaire à l'affichage de l'image*/
 function imagePreview(event) {
   const file = event.target.files[0];
   readFile(file, (imageSrc) => updatePreview(imageSrc, "Aperçu de l'image"));
 }
 
 export function setEventModal() {
-  /* simule l'évenement de click sur la zone de drop de fichier et l'associe au bouton -modale2- */
+
   document
     .getElementById("upload-button")
     .addEventListener("click", function () {
       document.getElementById("photo").click();
     });
 
-  /* en cas de modif de l'input id=photo lancer fonction imagePreview */
   document.getElementById("photo").addEventListener("change", imagePreview);
 
-  /* quand on click sur le submit-btn -modale2- on lance la fonction getFormContent */
   document
     .getElementById("submit-btn")
     .addEventListener("click", (event) => getFormContent(event));

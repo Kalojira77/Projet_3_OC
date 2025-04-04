@@ -1,7 +1,7 @@
 /**  Gestion des appels API */
 
 
-/** Fonction pour récupérer les catégories */
+/** récupérer les catégories */
 
 export async function getCategories() {
   try {
@@ -10,11 +10,10 @@ export async function getCategories() {
     return categories;
   } catch (error) {
     console.error("categories n'est pas disponible ou ne retourne rien");
-  }
-  
+  } 
 }
 
-/** Fonction qui récupère le contenu de Works */
+/** récupère le contenu de Works */
 
 export async function getWorks() {
   try {
@@ -27,10 +26,9 @@ export async function getWorks() {
 }
 
 
-/** fonction qui ajoute le nouveau projet à Works. */
+/** ajoute le nouveau projet à Works. */
 
 export async function addWork(title, selectedImage, categoryId) {
-  console.log(selectedImage + "/" + title + "/" + categoryId);
 
   const formData = new FormData();
   formData.append("image", selectedImage); 
@@ -48,14 +46,13 @@ export async function addWork(title, selectedImage, categoryId) {
     });
 
     const result = await response.json();
-    console.log(result);
 
   } catch (error) {
     console.error("La requête a eu une erreur: " + error);
   }
 };
 
-/** Fonction qui supprime le projet selon son id dans Works */
+/** supprime le projet selon son id dans Works */
 
 export async function deleteWork(id) {
   try {
@@ -70,8 +67,6 @@ export async function deleteWork(id) {
       console.error("Erreur lors de la suppression:", response.status);
       return; 
     }
-
-    console.log(`Work ${id} supprimé avec succès`);
 
   } catch (error) {
     console.error("Erreur dans la fonction deleteWork:", error);

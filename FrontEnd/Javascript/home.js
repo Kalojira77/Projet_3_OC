@@ -65,9 +65,7 @@ export async function createButton(){
         });
         
         filtres.appendChild(filterButton);   
-    }
-
-    
+    }   
 }
 
 //** FONCTION DE FILTRAGE DES BOUTONS */

@@ -3,7 +3,7 @@ import { displayWorks, createButton } from './home.js';
 import { adminMode, setupLogout } from './login.js';
 import { modalGetCategory, setEventModal} from './modal.js';
 
-/** Appeler les fonctions et afficher les résultats dans la console */
+/** Appeler les fonctions */
 createButton();
 displayWorks();
 setupLogout();
