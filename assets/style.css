@@ -1,0 +1,738 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+:root {
+  --primary-color: #1d6154;
+  --secondary-color: #0e2f28;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/** end reset css**/
+body {
+  max-width: 1140px;
+  margin: auto;
+  font-family: "Work Sans";
+  font-size: 14px;
+  background-color: #fffef8;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+section {
+  margin: 50px 0;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  font-family: "Syne";
+  font-size: 22px;
+  font-weight: 800;
+  color: #b1663c;
+}
+
+h1 > span {
+  font-family: "Work Sans";
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--primary-color);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+nav li {
+  padding: 0 10px;
+  font-size: 1.2em;
+}
+
+nav li a:hover {
+  font-weight: bold;
+}
+
+nav li img {
+  width: 16px;
+  height: 16px;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.displayNone {
+  display: none;
+}
+
+#introduction {
+  display: flex;
+  align-items: center;
+}
+#introduction figure {
+  flex: 1;
+}
+#introduction img {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+#introduction article {
+  flex: 1;
+}
+#introduction h2 {
+  margin-bottom: 1em;
+}
+
+#introduction p {
+  margin-bottom: 0.5em;
+}
+#portfolio h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+}
+#contact {
+  width: 50%;
+  margin: auto;
+}
+#contact > * {
+  text-align: center;
+}
+#contact h2 {
+  margin-bottom: 20px;
+}
+#contact form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#contact label {
+  margin: 2em 0 1em 0;
+}
+
+#contact textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2em;
+}
+
+/* BUTTONS */
+
+input[type="submit"] {
+  margin: 2em auto;
+}
+
+.button-general {
+  border: none;
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+  background-color: var(--primary-color);
+  width: 180px;
+  text-align: center;
+  border-radius: 60px;
+}
+
+.button-general:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.button-general.selectAllBtn {
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  width: auto;
+  min-width: 100px;
+  height: 37px;
+}
+
+.button-general.selectAllBtn:focus {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px;
+}
+/* ADMIN BANNER */
+
+#admin-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* LOGIN PAGE */
+
+#loginSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#loginSection h2 {
+  padding: 20px;
+}
+
+#loginFormElement {
+  display: flex;
+  flex-direction: column;
+  background-color: white !important;
+}
+
+#loginFormElement a {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.loginBtn {
+  padding: 3px;
+  width: 179px;
+  height: 36px;
+  border: none;
+  font-family: "Syne";
+  font-size: 16px;
+  color: white;
+  background-color: var(--primary-color);
+  text-align: center;
+  border-radius: 60px;
+  margin: 0 auto;
+}
+
+.loginBtn:hover {
+  color: white;
+  background-color: #0e2f28;
+}
+
+.login-input {
+  padding-left: 10px;
+  height: 50px;
+  width: 379px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.login-input textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.loginFormElement label {
+  font-family: "Work Sans";
+}
+
+#authError {
+  color: red;
+  font-weight: bold !important;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* MODAL */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+#modal-content {
+  font-family: "Work Sans";
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px 10px;
+  padding-bottom: 50px;
+  overflow-y: auto;
+}
+
+#modal-content img {
+  width: 100%;
+  height: 120px;
+  background-size: auto;
+  object-fit: cover;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  height: 83px;
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  width: 80%;
+}
+
+#first-btn {
+  width: 80%;
+}
+
+.modal-btn {
+  flex: 0 0 83px;
+  border-top: 2px solid lightgray;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.modal-wrapper {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 630px;
+  height: 670px;
+}
+
+#first-modal,
+#second-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#modalLink {
+  text-decoration: none;
+  color: white;
+}
+
+#first-modal .modal-content {
+  font-size: 12px;
+  color: white;
+}
+
+.file-info {
+  margin-bottom: 10px;
+}
+
+#modal-button {
+  width: 237px;
+  height: 36px;
+  padding: 10px;
+}
+
+.add-photo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  display: flex;
+  padding: 20px 0px 10px 0px;
+  font-size: 15px;
+}
+
+.form-group input {
+  height: 50px;
+  font-size: 1.1em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  padding-left: 11px;
+}
+
+.form-group select {
+  height: 50px;
+  font-size: 1.1em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  padding-left: 10px;
+}
+
+#upload-button {
+  border: none;
+  font-family: "Syne";
+  font-weight: 500;
+  font-size: 14px;
+  color: #306685;
+  background-color: #cbd6dc;
+  width: 173px;
+  height: 36px;
+  text-align: center;
+  border-radius: 50px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#submit-btn {
+  width: 237px;
+  height: 36px;
+  padding: 10px;
+}
+
+.unlock-submit-btn {
+  background-color: var(--primary-color);
+}
+.unlock-submit-btn:hover {
+  background-color: var(--secondary-color);
+}
+.lock-submit-btn {
+  background-color: #cbd6dc;
+}
+.lock-submit-btn:hover {
+  background-color: #cbd6dc;
+}
+
+#drop-label {
+  height: 100%;
+}
+
+#drop-zone {
+  position: relative;
+  background-color: #e8f1f6;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 50%;
+}
+
+.cross-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 10;
+  display: none;
+}
+
+#select-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#drop-zone .fa-regular {
+  width: 76px;
+  height: 76px;
+  font-size: 73px;
+  padding-top: 10px;
+  color: #b9c5cc;
+}
+
+#preview-image {
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Bouton modifier */
+
+.fantom {
+  width: 1140px;
+}
+
+.modification {
+  display: flex;
+}
+
+#modif-btn {
+  display: none;
+  align-items: center;
+  cursor: pointer;
+}
+
+.conteneurModif {
+  width: 1140px;
+}
+
+#modification h2 {
+  display: flex;
+  white-space: nowrap;
+}
+
+.modification i {
+  padding: 10px;
+  font-size: 14px;
+  color: black;
+}
+
+.modification span {
+  font-family: "Work Sans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+/* ..... */
+
+.fa-arrow-left {
+  color: black;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#close-icon1,
+#close-icon2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 999;
+}
+
+#close-icon1:hover {
+  transform: scale(1.1);
+}
+
+.work-item {
+  position: relative;
+}
